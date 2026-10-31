@@ -3,30 +3,29 @@
  * What each field means: src/config.ts. Generate one with `npm run setup`;
  * check it against the live API with `npm run check`.
  *
- * This default is a worked example: the Province of Bohol. Its three DPWH
- * district engineering offices bring in every DPWH line listed under them;
- * the place name brings in lines from all four programs whose title names
- * Bohol (Central Office projects, farm-to-market roads, health facilities,
- * irrigation). More examples in examples/.
+ * The Province of Aklan, Region VI. One district engineering office,
+ * "Aklan District Engineering Office", serves both legislative districts
+ * (Tier B), so its budget is shown once, whole, and never split between
+ * them. The place name brings in the lines of all four programs whose
+ * title names Aklan: Central Office projects, farm-to-market roads,
+ * health facilities and irrigation.
  */
 import { defineConfig } from './src/config';
 
 export default defineConfig({
-  id: 'bohol-province',
+  id: 'aklan-province',
   kind: 'province',
-  name: 'Province of Bohol',
-  shortName: 'Bohol',
-  operator: { name: 'BetterGov.ph', url: 'https://bettergov.ph' },
-  // Where this example is deployed. Change it (or remove it) in your fork.
-  siteUrl: 'https://transparency-portal.bettergov.workers.dev',
+  name: 'Province of Aklan',
+  shortName: 'Aklan',
+  operator: { name: 'BetterAklan', url: 'https://betteraklan.org' },
+  // The canonical URL of this deployment, for link previews.
+  siteUrl: 'https://transparency.betteraklan.org',
   scope: {
-    offices: [
-      'Bohol 1st District Engineering Office',
-      'Bohol 2nd District Engineering Office',
-      'Bohol 3rd District Engineering Office',
-    ],
-    places: [{ label: 'Bohol', region: 'VII' }],
-    districts: ['leg:bohol:1st', 'leg:bohol:2nd', 'leg:bohol:3rd'],
+    // The one office the FY2027 documents list for Aklan, named as published.
+    offices: ['Aklan District Engineering Office'],
+    places: [{ label: 'Aklan', region: 'VI' }],
+    // Both legislative districts (RA 11917 split Aklan in two).
+    districts: ['leg:aklan:1st', 'leg:aklan:2nd'],
     exclude: [],
   },
   reporting: { enabled: false },
